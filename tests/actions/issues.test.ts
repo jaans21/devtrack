@@ -1,18 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { prisma } from "@/lib/db";
 
-vi.mock("@/lib/auth", () => ({
-  auth: vi.fn().mockResolvedValue({ user: { id: "user-1" } }),
-}));
-
-vi.mock("next/cache", () => ({
-  revalidatePath: vi.fn(),
-}));
-
-vi.mock("@/lib/sse/manager", () => ({
-  broadcastToWorkspace: vi.fn(),
-  broadcastToUser: vi.fn(),
-}));
+// Common mocks (db, auth, sse, next/cache) are provided in vitest.setup.ts.
 
 describe("Issue actions", () => {
   beforeEach(() => {
@@ -26,7 +15,7 @@ describe("Issue actions", () => {
       const { createIssue } = await import("@/lib/actions/issues");
 
       const result = await createIssue({
-        projectId: "nonexistent",
+        projectId: "ckxprojectnonexist0000000",
         title: "Test issue",
       });
 
@@ -35,7 +24,7 @@ describe("Issue actions", () => {
     });
 
     it("returns error when user is not a workspace member", async () => {
-      const mockProject = { id: "project-1", workspaceId: "ws-1" };
+      const mockProject = { id: "ckxproject00000000000000", workspaceId: "ckxworkspace000000000000" };
 
       vi.mocked(prisma.project.findUnique).mockResolvedValueOnce(mockProject as never);
       vi.mocked(prisma.workspaceMember.findFirst).mockResolvedValueOnce(null);
@@ -43,7 +32,7 @@ describe("Issue actions", () => {
       const { createIssue } = await import("@/lib/actions/issues");
 
       const result = await createIssue({
-        projectId: "project-1",
+        projectId: "ckxproject00000000000000",
         title: "Test issue",
       });
 
@@ -55,7 +44,7 @@ describe("Issue actions", () => {
       const { createIssue } = await import("@/lib/actions/issues");
 
       const result = await createIssue({
-        projectId: "project-1",
+        projectId: "ckxproject00000000000000",
         title: "",
       });
 
@@ -71,7 +60,7 @@ describe("Issue actions", () => {
       const { moveIssue } = await import("@/lib/actions/issues");
 
       const result = await moveIssue({
-        id: "nonexistent",
+        id: "ckxissuenonexist00000000",
         status: "DONE",
         position: 1000,
       });

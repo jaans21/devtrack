@@ -4,12 +4,7 @@ export type LinkedIssueRef = {
   action: "fixes" | "references";
 };
 
-const CLOSING_KEYWORDS = /\b(fix(?:es|ed)?|close[sd]?|resolve[sd]?)\b/i;
-const ISSUE_PATTERN = /(?:([A-Z]{1,6})-(\d+)|#(\d+))/g;
-const FULL_PATTERN = new RegExp(
-  `(?:${CLOSING_KEYWORDS.source}\\s+)?${ISSUE_PATTERN.source}`,
-  "gi"
-);
+const CLOSING_KEYWORDS = /\b(?:fix(?:es|ed)?|close[sd]?|resolve[sd]?)\b/i;
 
 export function parseIssueRefs(text: string, defaultProjectKey?: string): LinkedIssueRef[] {
   const refs: LinkedIssueRef[] = [];

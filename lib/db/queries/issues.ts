@@ -29,7 +29,7 @@ export async function getIssuesByProject(
     where.labels = { some: { labelId: { in: filters.labelIds } } };
   }
   if (filters?.search) {
-    where.title = { contains: filters.search, mode: Prisma.QueryMode.insensitive };
+    where.title = { contains: filters.search, mode: "insensitive" };
   }
 
   return prisma.issue.findMany({

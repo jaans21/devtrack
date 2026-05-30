@@ -44,10 +44,13 @@ export async function POST(request: Request) {
   // Log the delivery
   const repoId = (payload as { repository?: { id?: number } })?.repository?.id;
   const repo = repoId
-    ? await prisma.gitHubRepo.findFirst({ where: { repoId } })
+    ? await prisma.gitHubRepo.findFirst({
+        where: { repoId },
+        include: { connection: { select: { workspaceId: true } } },
+      })
     : null;
   const webhook = repo
-    ? await prisma.webhook.findFirst({ where: { workspaceId: repo.connection?.workspaceId ?? "" } })
+    ? await prisma.webhook.findFirst({ where: { workspaceId: repo.connection.workspaceId } })
     : null;
 
   // Process async — respond immediately to GitHub

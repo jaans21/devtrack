@@ -20,7 +20,7 @@ export default auth((req: NextRequest & { auth: { user?: { needsOnboarding?: boo
     return NextResponse.redirect(new URL("/onboarding/workspace", req.url));
   }
 
-  if (session && !session.user.needsOnboarding && pathname === "/") {
+  if (session?.user && !session.user.needsOnboarding && pathname === "/") {
     return NextResponse.redirect(new URL("/workspaces", req.url));
   }
 
