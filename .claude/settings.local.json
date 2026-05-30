@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npx --version)",
+      "Bash(npm show *)",
+      "PowerShell(Get-ChildItem -Path \"D:\\\\DevTrack\" -Recurse -File | Where-Object { $_.FullName -notmatch 'node_modules|\\\\.next|migrations' } | Measure-Object | Select-Object Count)",
+      "Bash(find /mnt/d/DevTrack -type f ! -path '*/node_modules/*' ! -path '*/.next/*' | wc -l)",
+      "Bash(npm audit *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(f'{v[\\\\\"severity\\\\\"].upper\\(\\)}: {k} \\({v[\\\\\"range\\\\\"]}\\) — via {list\\(v[\\\\\"effects\\\\\"]\\)[:2]}'\\) for k,v in d.get\\('vulnerabilities',{}\\).items\\(\\)]\")"
+    ]
+  }
+}
