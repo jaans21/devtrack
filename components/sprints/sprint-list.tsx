@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { createSprint, startSprint, completeSprint } from "@/lib/actions/sprints";
+import { createSprint } from "@/lib/actions/sprints";
 import { SprintCard } from "./sprint-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

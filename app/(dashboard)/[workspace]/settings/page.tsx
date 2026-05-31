@@ -18,7 +18,6 @@ export default async function WorkspaceSettingsPage({ params }: PageProps) {
   });
   if (!workspace) notFound();
 
-  const isOwner = workspace.ownerId === session.user.id;
 
   return (
     <div className="p-6 max-w-2xl mx-auto space-y-8">

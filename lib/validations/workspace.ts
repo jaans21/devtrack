@@ -9,7 +9,15 @@ export const createWorkspaceSchema = z.object({
     .regex(/^[a-z0-9-]+$/, "Slug can only contain lowercase letters, numbers, and hyphens"),
 });
 
-export const updateWorkspaceSchema = createWorkspaceSchema.partial().extend({
+export const updateWorkspaceSchema = z.object({
+  id: z.string().cuid(),
+  name: z.string().min(2).max(50).optional(),
+  slug: z
+    .string()
+    .min(2)
+    .max(30)
+    .regex(/^[a-z0-9-]+$/)
+    .optional(),
   logoUrl: z.string().url().optional().nullable(),
 });
 

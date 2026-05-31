@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { IssueWithRelations } from "@/lib/db/queries/issues";
-import { PRIORITY_COLORS, PRIORITY_LABELS } from "@/lib/utils/colors";
+import { PRIORITY_COLORS } from "@/lib/utils/colors";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { formatDate } from "@/lib/utils/format";
 import type { IssuePriority } from "@prisma/client";

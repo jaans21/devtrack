@@ -1,5 +1,5 @@
 import { auth } from "@/lib/auth";
-import { addConnection, removeConnection, broadcastToUser } from "@/lib/sse/manager";
+import { addConnection, removeConnection } from "@/lib/sse/manager";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";

@@ -1,10 +1,6 @@
 import Link from "next/link";
 
-export default function AuthErrorPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ error?: string }>;
-}) {
+export default function AuthErrorPage() {
   return (
     <div className="rounded-2xl border border-slate-700 bg-slate-800/60 p-8 text-center shadow-2xl">
       <h1 className="text-xl font-bold text-white">Authentication Error</h1>

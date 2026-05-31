@@ -34,7 +34,7 @@ interface CreateIssueDialogProps {
   labels: PrismaLabel[];
 }
 
-export function CreateIssueDialog({ projectId, projectKey, members, labels }: CreateIssueDialogProps) {
+export function CreateIssueDialog({ projectId, projectKey, members }: CreateIssueDialogProps) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 

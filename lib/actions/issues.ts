@@ -12,14 +12,6 @@ import {
 import { getNextIssueNumber } from "@/lib/utils/issue-number";
 import { broadcastToWorkspace } from "@/lib/sse/manager";
 
-async function getWorkspaceIdForIssue(issueId: string): Promise<string | null> {
-  const issue = await prisma.issue.findUnique({
-    where: { id: issueId },
-    include: { project: { select: { workspaceId: true } } },
-  });
-  return issue?.project.workspaceId ?? null;
-}
-
 export const createIssue = createAction(createIssueSchema, async (input, userId) => {
   const project = await prisma.project.findUnique({ where: { id: input.projectId } });
   if (!project) throw new Error("Project not found");

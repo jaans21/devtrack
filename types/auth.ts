@@ -12,10 +12,3 @@ declare module "next-auth" {
     needsOnboarding?: boolean;
   }
 }
-
-declare module "next-auth/jwt" {
-  interface JWT {
-    id: string;
-    needsOnboarding: boolean;
-  }
-}

@@ -50,7 +50,7 @@ export const updateSprint = createAction(updateSprintSchema, async (input, _user
   });
 });
 
-export const startSprint = createAction(startSprintSchema, async (input, userId) => {
+export const startSprint = createAction(startSprintSchema, async (input, _userId) => {
   const sprint = await prisma.sprint.findUnique({
     where: { id: input.id },
     include: { project: true },

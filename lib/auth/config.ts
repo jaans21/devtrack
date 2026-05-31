@@ -74,8 +74,10 @@ export const authConfig: NextAuthConfig = {
       return token;
     },
     async session({ session, token }) {
-      session.user.id = token.id;
-      session.user.needsOnboarding = token.needsOnboarding ?? false;
+      if (session.user) {
+        session.user.id = (token.id as string | undefined) ?? token.sub ?? "";
+        session.user.needsOnboarding = (token.needsOnboarding as boolean | undefined) ?? false;
+      }
       return session;
     },
   },

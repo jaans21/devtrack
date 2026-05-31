@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FolderKanban, Plus, Bell, Settings, LayoutDashboard } from "lucide-react";
+import { Plus, Bell, Settings, LayoutDashboard } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import type { Project, Workspace } from "@prisma/client";
 

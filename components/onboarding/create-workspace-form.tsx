@@ -20,11 +20,8 @@ export function CreateWorkspaceForm() {
     register,
     handleSubmit,
     setValue,
-    watch,
     formState: { errors },
   } = useForm<CreateWorkspaceInput>({ resolver: zodResolver(createWorkspaceSchema) });
-
-  const name = watch("name");
 
   async function onSubmit(data: CreateWorkspaceInput) {
     setLoading(true);

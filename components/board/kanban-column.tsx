@@ -14,7 +14,7 @@ interface KanbanColumnProps {
   projectId: string;
 }
 
-export function KanbanColumn({ status, issues, projectId }: KanbanColumnProps) {
+export function KanbanColumn({ status, issues }: KanbanColumnProps) {
   const { setNodeRef, isOver } = useDroppable({ id: status });
   const colors = STATUS_COLORS[status];
 
